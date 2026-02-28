@@ -19,7 +19,7 @@ const navItems = [
 export function Sidebar() {
   return (
     <aside className={styles.sidebar}>
-      <div className={styles.brand}>Web3 PM</div>
+      <div className={styles.brand}>ChainPilot</div>
 
       <nav className={styles.menu} aria-label="Main navigation">
         {navItems.map(({ to, label, mobileLabel, icon: Icon }) => (

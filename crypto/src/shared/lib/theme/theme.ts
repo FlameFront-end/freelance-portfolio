@@ -1,4 +1,4 @@
-export const THEME_STORAGE_KEY = 'crypto-theme'
+export const THEME_STORAGE_KEY = 'chainpilot-theme'
 
 export type ThemeMode = 'dark' | 'light'
 

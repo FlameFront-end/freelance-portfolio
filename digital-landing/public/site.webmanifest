@@ -1,0 +1,17 @@
+{
+  "name": "Nebula - Premium UI Platform",
+  "short_name": "Nebula",
+  "description": "Premium digital product landing page with pricing and docs.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#070b14",
+  "theme_color": "#070b14",
+  "icons": [
+    {
+      "src": "/nebula-mark.svg",
+      "sizes": "64x64",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

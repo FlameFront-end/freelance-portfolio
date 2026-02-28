@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Nebula icon">
+  <defs>
+    <linearGradient id="bg" x1="6" y1="6" x2="58" y2="58" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#111a2c"/>
+      <stop offset="1" stop-color="#050a14"/>
+    </linearGradient>
+    <radialGradient id="orb" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(32 32) scale(20)">
+      <stop offset="0" stop-color="#e2e8f0"/>
+      <stop offset="0.45" stop-color="#a7f3d0"/>
+      <stop offset="1" stop-color="#7dd3fc"/>
+    </radialGradient>
+    <linearGradient id="ring" x1="14" y1="32" x2="50" y2="32" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#f9a8d4"/>
+      <stop offset="0.5" stop-color="#c4b5fd"/>
+      <stop offset="1" stop-color="#7dd3fc"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="4" y="4" width="56" height="56" rx="14" fill="url(#bg)"/>
+  <rect x="4.5" y="4.5" width="55" height="55" rx="13.5" fill="none" stroke="rgba(255,255,255,0.16)"/>
+
+  <circle cx="32" cy="32" r="11" fill="url(#orb)"/>
+  <ellipse cx="32" cy="32" rx="18" ry="8.5" fill="none" stroke="url(#ring)" stroke-width="3" transform="rotate(-18 32 32)"/>
+  <circle cx="45.5" cy="25" r="2.1" fill="#ffffff"/>
+</svg>
