@@ -1,0 +1,180 @@
+.layout {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.leftColumn {
+  flex: 1.25;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.rightColumn {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.skeletonCard {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.skeletonHead {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 12px;
+}
+
+.skeletonStack {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.skeletonField {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.skeletonGridTwo {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.skeletonActions {
+  margin-top: 12px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.skeletonProfileLayout {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: 116px minmax(0, 1fr);
+  align-items: start;
+}
+
+.skeletonAvatar {
+  width: 116px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--panel-2);
+  padding: 12px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.skeletonSurfaceRow {
+  min-height: 44px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--panel-2);
+  padding: 8px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.skeletonSessionRow {
+  min-height: 54px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--panel-2);
+  padding: 8px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.skeletonSessionMain {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.skeletonButtonsGrid {
+  margin-top: 12px;
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.skeletonPhrase {
+  margin-top: 12px;
+  border-radius: 10px;
+  border: 1px dashed var(--border-2);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.skeletonDanger {
+  margin-top: 12px;
+  min-height: 54px;
+  border-radius: 10px;
+  border: 1px solid color-mix(in srgb, var(--danger) 35%, transparent);
+  background: color-mix(in srgb, var(--danger) 10%, transparent);
+  padding: 8px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+@media (max-width: 1140px) {
+  .layout {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .leftColumn,
+  .rightColumn,
+  .skeletonCard {
+    width: 100%;
+    flex: 1 1 auto;
+  }
+}
+
+@media (max-width: 780px) {
+  .skeletonGridTwo {
+    grid-template-columns: 1fr;
+  }
+
+  .skeletonProfileLayout {
+    grid-template-columns: 1fr;
+  }
+
+  .skeletonAvatar {
+    width: 100%;
+  }
+
+  .skeletonButtonsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  .skeletonSurfaceRow,
+  .skeletonSessionRow,
+  .skeletonDanger {
+    min-height: 0;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

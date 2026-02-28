@@ -1,0 +1,168 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  appearance: none;
+  outline: none;
+  background: rgba(7, 10, 18, 0.5);
+  cursor: pointer;
+}
+
+.overlay:focus-visible {
+  outline: none;
+}
+
+.drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 100;
+  width: min(440px, 100vw);
+  height: 100vh;
+  border-left: 1px solid var(--border);
+  background: var(--panel);
+  box-shadow: -14px 0 30px rgba(2, 6, 23, 0.25);
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  min-height: 72px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 16px;
+}
+
+.assetInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.symbol {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.meta {
+  color: var(--text-2);
+  font-size: 12px;
+}
+
+.closeButton {
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--panel-2);
+  color: var(--text);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.content {
+  flex: 1;
+  overflow: auto;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.blockTitle {
+  margin-bottom: 8px;
+  color: var(--text-2);
+  font-size: 12px;
+}
+
+.balanceValue {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.1;
+  font-family: var(--font-numeric);
+}
+
+.balanceMeta {
+  margin-top: 6px;
+  color: var(--text-2);
+  font-size: 12px;
+}
+
+.changePositive {
+  color: var(--success);
+}
+
+.changeNegative {
+  color: var(--danger);
+}
+
+.chartArea {
+  width: 100%;
+  height: 150px;
+}
+
+.actions {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.txList {
+  display: flex;
+  flex-direction: column;
+}
+
+.txRow {
+  min-height: 48px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.txRow:last-child {
+  border-bottom: 0;
+}
+
+.txLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.txType {
+  font-size: 12px;
+  color: var(--text-2);
+}
+
+.txHash {
+  font-size: 12px;
+  font-family: var(--font-numeric);
+}
+
+.txRight {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.txValue {
+  font-size: 12px;
+  font-family: var(--font-numeric);
+}
+
+@media (max-width: 680px) {
+  .drawer {
+    width: 100vw;
+  }
+}

@@ -1,0 +1,21 @@
+# Workspace-wide ignores
+.vscode/
+.idea/
+.DS_Store
+
+# Dependencies and build outputs
+**/node_modules/
+**/dist/
+**/.next/
+**/coverage/
+**/.vercel/
+**/.git_backup/
+
+# Logs
+**/npm-debug.log*
+**/yarn-debug.log*
+**/yarn-error.log*
+**/pnpm-debug.log*
+
+# Env
+**/.env*

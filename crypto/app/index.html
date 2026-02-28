@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web3 Portfolio Manager</title>
+    <script>
+      ;(() => {
+        const storageKey = 'crypto-theme'
+        const root = document.documentElement
+
+        try {
+          const savedTheme = localStorage.getItem(storageKey)
+          const isValid = savedTheme === 'dark' || savedTheme === 'light'
+          const preferredTheme = window.matchMedia('(prefers-color-scheme: light)').matches
+            ? 'light'
+            : 'dark'
+          const theme = isValid ? savedTheme : preferredTheme
+
+          root.dataset.theme = theme
+          root.style.colorScheme = theme
+        } catch {
+          root.dataset.theme = 'dark'
+          root.style.colorScheme = 'dark'
+        }
+      })()
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

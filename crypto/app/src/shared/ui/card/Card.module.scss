@@ -1,0 +1,17 @@
+.card {
+  border-radius: 13px;
+  border: 1px solid var(--border);
+  background: var(--panel);
+  box-shadow: 0 10px 26px rgba(5, 9, 18, 0.18);
+  transition: background 200ms ease, border-color 200ms ease, box-shadow 200ms ease;
+}
+
+.interactive:hover {
+  background: var(--panel-2);
+  border-color: var(--border-2);
+  box-shadow: 0 14px 30px rgba(5, 9, 18, 0.22);
+}
+
+.content {
+  padding: 16px;
+}

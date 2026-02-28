@@ -1,0 +1,93 @@
+.card {
+  height: 100%;
+}
+
+.head {
+  margin-bottom: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.title {
+  font-size: 16px;
+}
+
+.description {
+  color: var(--text-2);
+  font-size: 12px;
+}
+
+.controls {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.row {
+  min-height: 44px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--panel-2);
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.rowLabel {
+  font-size: 13px;
+}
+
+.sessions {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sessionsTitle {
+  font-size: 12px;
+  color: var(--text-2);
+}
+
+.sessionItem {
+  min-height: 54px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--panel-2);
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.sessionMain {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.device {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.meta {
+  color: var(--text-2);
+  font-size: 12px;
+}
+
+.actions {
+  margin-top: 12px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media (max-width: 780px) {
+  .controls {
+    grid-template-columns: 1fr;
+  }
+}

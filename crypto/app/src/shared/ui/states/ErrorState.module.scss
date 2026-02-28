@@ -1,0 +1,27 @@
+.root {
+  min-height: 180px;
+  border-radius: 12px;
+  border: 1px solid color-mix(in srgb, var(--danger) 45%, transparent);
+  background: color-mix(in srgb, var(--danger) 10%, transparent);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-align: center;
+  padding: 20px;
+}
+
+.icon {
+  color: var(--danger);
+}
+
+.title {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.description {
+  color: var(--text);
+  max-width: 54ch;
+}

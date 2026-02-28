@@ -1,0 +1,61 @@
+.wrap {
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  overflow: auto;
+  background: var(--panel);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 780px;
+}
+
+.headCell {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  padding: 12px 14px;
+  text-align: left;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-2);
+  background: var(--panel-2);
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+.headCellRight {
+  text-align: right;
+}
+
+.row {
+  border-bottom: 1px solid var(--border);
+  transition: background 160ms ease;
+}
+
+.row:last-child {
+  border-bottom: 0;
+}
+
+.row:hover {
+  background: var(--panel-2);
+}
+
+.rowInteractive {
+  cursor: pointer;
+}
+
+.rowInteractive:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+}
+
+.cell {
+  padding: 12px 14px;
+  white-space: nowrap;
+}
+
+.cellRight {
+  text-align: right;
+}
