@@ -1,0 +1,17 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.insightsGrid {
+  display: grid;
+  grid-template-columns: minmax(320px, 1fr) minmax(360px, 1.15fr);
+  gap: 18px;
+}
+
+@media (max-width: 1160px) {
+  .insightsGrid {
+    grid-template-columns: 1fr;
+  }
+}

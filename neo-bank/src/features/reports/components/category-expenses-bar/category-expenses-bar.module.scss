@@ -1,0 +1,29 @@
+.panel {
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--panel);
+  padding: 16px;
+}
+
+.head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.title {
+  margin: 0;
+  font-size: 20px;
+}
+
+.meta {
+  margin: 0;
+  color: var(--text-2);
+  font-size: 12px;
+}
+
+.chartWrap {
+  height: 300px;
+}

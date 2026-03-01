@@ -1,0 +1,44 @@
+.panel {
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--panel);
+  padding: 14px;
+}
+
+.header,
+.row {
+  border-radius: 10px;
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--panel-2) 92%, transparent) 25%,
+    color-mix(in srgb, var(--border-2) 52%, transparent) 50%,
+    color-mix(in srgb, var(--panel-2) 92%, transparent) 75%
+  );
+  background-size: 240% 100%;
+  animation: shimmer 1.15s linear infinite;
+}
+
+.header {
+  height: 28px;
+  width: 38%;
+}
+
+.list {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.row {
+  height: 46px;
+}
+
+@keyframes shimmer {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: -100% 0;
+  }
+}

@@ -1,0 +1,27 @@
+.panel {
+  border: 1px dashed var(--border-2);
+  border-radius: 14px;
+  background: var(--panel);
+  padding: 18px;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.title {
+  margin: 0 0 4px;
+  font-size: 18px;
+}
+
+.description {
+  margin: 0;
+  color: var(--text-2);
+}
+
+.empty {
+  color: var(--text-2);
+}
+
+.error {
+  color: var(--danger);
+}

@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>NeoBank</title>
+    <meta
+      name="description"
+      content="NeoBank is a modern personal finance dashboard to track balance, cards, transactions, and analytics."
+    />
+    <meta
+      name="keywords"
+      content="NeoBank, personal finance, dashboard, transactions, cards, analytics"
+    />
+    <meta name="author" content="NeoBank" />
+    <meta name="application-name" content="NeoBank" />
+    <meta name="robots" content="index,follow,max-image-preview:large" />
+    <meta name="color-scheme" content="dark light" />
+    <meta name="format-detection" content="telephone=no,email=no,address=no" />
+    <meta name="theme-color" content="#0a1226" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#eef4ff" media="(prefers-color-scheme: light)" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="NeoBank" />
+    <meta property="og:title" content="NeoBank" />
+    <meta
+      property="og:description"
+      content="Modern personal finance dashboard with balance, transaction history, cards and reports."
+    />
+    <meta property="og:image" content="/neobank-favicon.svg" />
+    <meta property="og:image:alt" content="NeoBank logo" />
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="NeoBank" />
+    <meta
+      name="twitter:description"
+      content="Modern personal finance dashboard with balance, cards and analytics."
+    />
+    <meta name="twitter:image" content="/neobank-favicon.svg" />
+
+    <link rel="icon" type="image/svg+xml" href="/neobank-favicon.svg" />
+    <link rel="apple-touch-icon" href="/neobank-favicon.svg" />
+    <script>
+      ;(() => {
+        const storageKey = 'neo-bank-theme-mode'
+        const root = document.documentElement
+        const getSystemTheme = () =>
+          window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+
+        try {
+          const savedMode = localStorage.getItem(storageKey)
+          const isValidMode = savedMode === 'dark' || savedMode === 'light' || savedMode === 'system'
+          const mode = isValidMode ? savedMode : 'system'
+          const resolvedTheme = mode === 'system' ? getSystemTheme() : mode
+
+          root.dataset.theme = resolvedTheme
+          root.style.colorScheme = resolvedTheme
+        } catch {
+          const fallbackTheme = getSystemTheme()
+          root.dataset.theme = fallbackTheme
+          root.style.colorScheme = fallbackTheme
+        }
+      })()
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/app/main.tsx"></script>
+  </body>
+</html>

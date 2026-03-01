@@ -1,0 +1,80 @@
+.card {
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--panel);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.visual {
+  border-radius: 14px;
+  padding: 16px;
+  min-height: 170px;
+  color: #f8fafc;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.active {
+  background: linear-gradient(130deg, #0ea5e9 0%, #2563eb 100%);
+}
+
+.frozen {
+  background: linear-gradient(130deg, #475569 0%, #1e293b 100%);
+}
+
+.visualTop,
+.visualBottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.type,
+.status,
+.expiry,
+.limit {
+  margin: 0;
+  font-size: 12px;
+}
+
+.status {
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.number {
+  margin: 0;
+  font-size: 26px;
+  letter-spacing: 0.04em;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.button {
+  height: 34px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--panel-2);
+  color: var(--text);
+  padding: 0 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: background-color 150ms ease, border-color 150ms ease;
+}
+
+.button:hover {
+  background: var(--accent-soft);
+  border-color: var(--border-2);
+}
