@@ -37,6 +37,10 @@ function startOfMonth(date: Date) {
   return new Date(date.getFullYear(), date.getMonth(), 1)
 }
 
+function addMonths(date: Date, delta: number) {
+  return new Date(date.getFullYear(), date.getMonth() + delta, 1)
+}
+
 function formatDisplay(isoDate: string) {
   const parsed = parseIso(isoDate)
   if (!parsed) {
@@ -91,24 +95,19 @@ export function DatePickerField({
 }: DatePickerFieldProps) {
   const rootRef = useRef<HTMLDivElement | null>(null)
   const [isOpen, setIsOpen] = useState(false)
-  const [displayMonth, setDisplayMonth] = useState(() => {
+  const [viewMonth, setViewMonth] = useState<Date | null>(null)
+
+  const selectedMonth = useMemo(() => {
     const parsedValue = value ? parseIso(value) : null
-    const parsedMin = minDate ? parseIso(minDate) : null
-    return startOfMonth(parsedValue ?? parsedMin ?? new Date())
-  })
-
-  useEffect(() => {
-    if (!value) {
-      return
-    }
-
-    const parsed = parseIso(value)
-    if (!parsed) {
-      return
-    }
-
-    setDisplayMonth(startOfMonth(parsed))
+    return parsedValue ? startOfMonth(parsedValue) : null
   }, [value])
+
+  const minMonth = useMemo(() => {
+    const parsedMin = minDate ? parseIso(minDate) : null
+    return startOfMonth(parsedMin ?? new Date())
+  }, [minDate])
+
+  const displayMonth = viewMonth ?? selectedMonth ?? minMonth
 
   useEffect(() => {
     if (!isOpen) {
@@ -156,6 +155,7 @@ export function DatePickerField({
     }
 
     onChange(isoDate)
+    setViewMonth(null)
     setIsOpen(false)
   }
 
@@ -164,7 +164,10 @@ export function DatePickerField({
       <button
         type="button"
         className={styles.trigger}
-        onClick={() => setIsOpen((prev) => !prev)}
+        onClick={() => {
+          setViewMonth(null)
+          setIsOpen((prev) => !prev)
+        }}
         aria-haspopup="dialog"
         aria-expanded={isOpen}
       >
@@ -188,9 +191,7 @@ export function DatePickerField({
               type="button"
               className={styles.navButton}
               onClick={() =>
-                setDisplayMonth(
-                  (prev) => new Date(prev.getFullYear(), prev.getMonth() - 1, 1),
-                )
+                setViewMonth((prev) => addMonths(prev ?? displayMonth, -1))
               }
               aria-label="Previous month"
             >
@@ -201,9 +202,7 @@ export function DatePickerField({
               type="button"
               className={styles.navButton}
               onClick={() =>
-                setDisplayMonth(
-                  (prev) => new Date(prev.getFullYear(), prev.getMonth() + 1, 1),
-                )
+                setViewMonth((prev) => addMonths(prev ?? displayMonth, 1))
               }
               aria-label="Next month"
             >

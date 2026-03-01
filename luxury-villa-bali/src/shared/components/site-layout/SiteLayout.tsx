@@ -17,9 +17,19 @@ const sectionLinks = [
 export function SiteLayout() {
   const location = useLocation()
   const [isScrolled, setIsScrolled] = useState(false)
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [menuOpenedAt, setMenuOpenedAt] = useState<string | null>(null)
   const isHome = location.pathname === '/'
+  const locationKey = `${location.pathname}${location.hash}`
+  const isMenuOpen = menuOpenedAt === locationKey
   const prefersReducedMotion = useReducedMotion()
+
+  const closeMenu = () => {
+    setMenuOpenedAt(null)
+  }
+
+  const toggleMenu = () => {
+    setMenuOpenedAt((prev) => (prev === locationKey ? null : locationKey))
+  }
 
   useEffect(() => {
     const onScroll = () => setIsScrolled(window.scrollY > 24)
@@ -47,20 +57,67 @@ export function SiteLayout() {
   }, [location.hash, location.pathname])
 
   useEffect(() => {
-    setIsMenuOpen(false)
-  }, [location.pathname, location.hash])
-
-  useEffect(() => {
     if (!isMenuOpen) {
-      document.body.style.overflow = ''
       return
     }
 
+    const viewportHeight = window.visualViewport?.height ?? window.innerHeight
+    document.documentElement.style.setProperty(
+      '--mobile-nav-height',
+      `${Math.round(viewportHeight)}px`,
+    )
+
+    return () => {
+      document.documentElement.style.removeProperty('--mobile-nav-height')
+    }
+  }, [isMenuOpen])
+
+  useEffect(() => {
+    if (!isMenuOpen) {
+      return
+    }
+
+    const scrollY = window.scrollY
     const prevOverflow = document.body.style.overflow
+    const prevPosition = document.body.style.position
+    const prevTop = document.body.style.top
+    const prevLeft = document.body.style.left
+    const prevRight = document.body.style.right
+    const prevWidth = document.body.style.width
+
     document.body.style.overflow = 'hidden'
+    document.body.style.position = 'fixed'
+    document.body.style.top = `-${scrollY}px`
+    document.body.style.left = '0'
+    document.body.style.right = '0'
+    document.body.style.width = '100%'
 
     return () => {
       document.body.style.overflow = prevOverflow
+      document.body.style.position = prevPosition
+      document.body.style.top = prevTop
+      document.body.style.left = prevLeft
+      document.body.style.right = prevRight
+      document.body.style.width = prevWidth
+      window.scrollTo(0, scrollY)
+    }
+  }, [isMenuOpen])
+
+  useEffect(() => {
+    if (!isMenuOpen) {
+      return
+    }
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setMenuOpenedAt(null)
+      }
+    }
+
+    window.addEventListener('keydown', onKeyDown)
+
+    return () => {
+      window.removeEventListener('keydown', onKeyDown)
     }
   }, [isMenuOpen])
 
@@ -100,7 +157,7 @@ export function SiteLayout() {
             aria-label="Toggle navigation"
             aria-expanded={isMenuOpen}
             aria-controls="site-main-nav"
-            onClick={() => setIsMenuOpen((prev) => !prev)}
+            onClick={toggleMenu}
           >
             <span />
             <span />
@@ -112,18 +169,23 @@ export function SiteLayout() {
             className={cn(styles.nav, isMenuOpen && styles.navOpen)}
             aria-label="Main"
           >
+            <div className={styles.mobileNavIntro} aria-hidden="true">
+              <span className={styles.mobileNavOverline}>Private Stay</span>
+              <strong className={styles.mobileNavTitle}>AURA Villa Bali</strong>
+            </div>
+
             {sectionLinks.map((link) => (
               <Link
                 key={link.to}
                 to={link.to}
                 className={cn(styles.navLink, isLinkActive(link.to) && styles.navLinkActive)}
-                onClick={() => setIsMenuOpen(false)}
+                onClick={closeMenu}
               >
                 {link.label}
               </Link>
             ))}
 
-            <Link className={styles.mobileCta} to="/book" onClick={() => setIsMenuOpen(false)}>
+            <Link className={styles.mobileCta} to="/book" onClick={closeMenu}>
               Check availability
             </Link>
           </nav>
@@ -139,7 +201,7 @@ export function SiteLayout() {
           type="button"
           className={styles.menuBackdrop}
           aria-label="Close navigation"
-          onClick={() => setIsMenuOpen(false)}
+          onClick={closeMenu}
         />
       ) : null}
 

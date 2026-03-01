@@ -12,46 +12,55 @@ import {
 } from '../model/bookingMath'
 import styles from './BookPage.module.scss'
 
-export function BookPage() {
-  const formId = 'booking-request-form'
-  const storageKey = 'aura-villa-booking-preferences-v1'
-  const pricePerNight = 420
-  const cleaningFee = 75
-
-  const [values, setValues] = useState<BookingValues>({
+function getInitialBookingValues(storageKey: string): BookingValues {
+  const defaults: BookingValues = {
     checkIn: '',
     checkOut: '',
     guests: 2,
     name: '',
     email: '',
     notes: '',
-  })
+  }
+
+  if (typeof window === 'undefined') {
+    return defaults
+  }
+
+  const raw = window.localStorage.getItem(storageKey)
+
+  if (!raw) {
+    return defaults
+  }
+
+  try {
+    const parsed = JSON.parse(raw) as Partial<BookingValues>
+
+    return {
+      ...defaults,
+      checkIn: typeof parsed.checkIn === 'string' ? parsed.checkIn : defaults.checkIn,
+      checkOut: typeof parsed.checkOut === 'string' ? parsed.checkOut : defaults.checkOut,
+      guests:
+        typeof parsed.guests === 'number'
+          ? Math.min(6, Math.max(1, parsed.guests))
+          : defaults.guests,
+    }
+  } catch {
+    window.localStorage.removeItem(storageKey)
+    return defaults
+  }
+}
+
+export function BookPage() {
+  const formId = 'booking-request-form'
+  const storageKey = 'aura-villa-booking-preferences-v1'
+  const pricePerNight = 420
+  const cleaningFee = 75
+
+  const [values, setValues] = useState<BookingValues>(() =>
+    getInitialBookingValues(storageKey),
+  )
   const [errors, setErrors] = useState<BookingErrors>({})
   const [isSubmitted, setIsSubmitted] = useState(false)
-
-  useEffect(() => {
-    const raw = window.localStorage.getItem(storageKey)
-
-    if (!raw) {
-      return
-    }
-
-    try {
-      const parsed = JSON.parse(raw) as Partial<BookingValues>
-
-      setValues((prev) => ({
-        ...prev,
-        checkIn: typeof parsed.checkIn === 'string' ? parsed.checkIn : prev.checkIn,
-        checkOut: typeof parsed.checkOut === 'string' ? parsed.checkOut : prev.checkOut,
-        guests:
-          typeof parsed.guests === 'number'
-            ? Math.min(6, Math.max(1, parsed.guests))
-            : prev.guests,
-      }))
-    } catch {
-      window.localStorage.removeItem(storageKey)
-    }
-  }, [])
 
   useEffect(() => {
     const payload = {
