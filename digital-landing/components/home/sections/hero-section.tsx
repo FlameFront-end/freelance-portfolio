@@ -128,10 +128,9 @@ export function HeroSection() {
             <p className="text-[11px] uppercase tracking-[0.14em] text-slate-400">Deploy speed</p>
             <p className="font-display mt-1 text-lg text-slate-100">4m 12s</p>
           </motion.div>
-          <div className="hidden justify-center md:flex">
+          <div className="flex justify-center">
             <HeroOrb />
           </div>
-          <div className="mx-auto h-64 w-64 rounded-full bg-[radial-gradient(circle,rgba(148,163,184,0.26),rgba(71,85,105,0.18)_46%,transparent_72%)] md:hidden" />
         </motion.div>
       </div>
     </SectionShell>

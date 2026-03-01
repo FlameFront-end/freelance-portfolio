@@ -1,0 +1,255 @@
+.section {
+  padding: var(--space-6) 0;
+  scroll-margin-top: 92px;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: var(--space-4);
+}
+
+.mapCard,
+.infoCard {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--panel);
+  padding: var(--space-4);
+}
+
+.eyebrow {
+  margin: 0 0 var(--space-2);
+  color: var(--muted);
+  font-size: var(--meta-size);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.mapCard h2 {
+  margin: 0 0 0.45rem;
+}
+
+.mapCanvas {
+  position: relative;
+  margin-top: var(--space-4);
+  border-radius: var(--radius-sm);
+  min-height: 300px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background:
+    radial-gradient(circle at 18% 25%, rgba(176, 141, 87, 0.16), transparent 26%),
+    radial-gradient(circle at 72% 70%, rgba(176, 141, 87, 0.13), transparent 32%),
+    linear-gradient(156deg, rgba(176, 141, 87, 0.08) 0%, transparent 55%),
+    linear-gradient(25deg, rgba(20, 20, 20, 0.05) 0%, transparent 45%),
+    repeating-linear-gradient(
+      0deg,
+      rgba(20, 20, 20, 0.05) 0,
+      rgba(20, 20, 20, 0.05) 1px,
+      transparent 1px,
+      transparent 24px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(20, 20, 20, 0.05) 0,
+      rgba(20, 20, 20, 0.05) 1px,
+      transparent 1px,
+      transparent 24px
+    ),
+    #f6f2ea;
+}
+
+.routesSvg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.routePathShort,
+.routePathMedium,
+.routePathLong {
+  fill: none;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.routePathShort {
+  stroke: rgba(20, 20, 20, 0.24);
+  stroke-width: 0.52;
+}
+
+.routePathMedium {
+  stroke: rgba(20, 20, 20, 0.2);
+  stroke-width: 0.52;
+}
+
+.routePathLong {
+  stroke: rgba(176, 141, 87, 0.56);
+  stroke-width: 0.6;
+}
+
+.routeNode {
+  fill: rgba(20, 20, 20, 0.24);
+}
+
+.mapCanvas::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 56% 48%, rgba(176, 141, 87, 0.08) 0%, transparent 36%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0) 55%, rgba(20, 20, 20, 0.06) 100%);
+}
+
+.pin {
+  position: absolute;
+  left: 56.1%;
+  top: 47.8%;
+  width: 16px;
+  height: 16px;
+  border-radius: 999px;
+  background: var(--accent);
+  z-index: 5;
+  box-shadow: 0 0 0 4px rgba(176, 141, 87, 0.18);
+}
+
+.ring {
+  position: absolute;
+  left: calc(56.1% - 16px);
+  top: calc(47.8% - 16px);
+  width: 48px;
+  height: 48px;
+  border-radius: 999px;
+  border: 1px solid rgba(176, 141, 87, 0.46);
+  z-index: 4;
+  animation: mapPulse 2.6s ease-out infinite;
+}
+
+.pinLabel {
+  position: absolute;
+  left: calc(56.1% + 30px);
+  top: calc(47.8% - 12px);
+  border: 1px solid color-mix(in srgb, var(--accent) 34%, var(--border));
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--text);
+  padding: 0.25rem 0.5rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  z-index: 5;
+}
+
+.spot {
+  position: absolute;
+  border: 1px solid color-mix(in srgb, var(--accent) 14%, var(--border));
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--text-2);
+  padding: 0.22rem 0.5rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+  z-index: 5;
+}
+
+.spotBeach {
+  right: 8%;
+  top: 13.5%;
+}
+
+.spotCafes {
+  left: 45%;
+  top: 20.5%;
+}
+
+.spotAirport {
+  left: 7%;
+  bottom: 13.5%;
+}
+
+@keyframes mapPulse {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.85;
+  }
+  70% {
+    transform: scale(1.1);
+    opacity: 0.28;
+  }
+  100% {
+    transform: scale(1.1);
+    opacity: 0;
+  }
+}
+
+.infoCard ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: var(--space-2);
+}
+
+.infoCard li {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 0.75rem 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: color-mix(in srgb, var(--accent-soft) 26%, white 74%);
+}
+
+.infoCard strong {
+  font-size: 0.95rem;
+  color: var(--text);
+}
+
+.mapsLink {
+  margin-top: var(--space-4);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  border: 1px solid var(--accent);
+  color: var(--text);
+  padding: 0.58rem 0.95rem;
+  text-decoration: none;
+  font-size: 0.83rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 1024px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .mapCanvas {
+    min-height: 270px;
+  }
+}
+
+@media (max-width: 560px) {
+  .pinLabel {
+    display: none;
+  }
+
+  .spot {
+    font-size: 0.67rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ring {
+    animation: none;
+  }
+}

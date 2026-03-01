@@ -1,0 +1,107 @@
+.section {
+  padding: var(--space-6) 0;
+  scroll-margin-top: 92px;
+}
+
+.head {
+  margin-bottom: var(--space-5);
+  max-width: 42rem;
+}
+
+.eyebrow {
+  margin: 0 0 var(--space-2);
+  color: var(--muted);
+  font-size: var(--meta-size);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.head h2 {
+  margin: 0 0 var(--space-2);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-3);
+}
+
+.card,
+.skeleton {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.card {
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  box-shadow: var(--shadow-soft);
+  background: var(--panel);
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: filter 200ms ease;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(10, 12, 15, 0.04) 0%,
+    rgba(10, 12, 15, 0.18) 100%
+  );
+  transition: background 200ms ease;
+}
+
+.card:hover img {
+  filter: brightness(1.04);
+}
+
+.card:hover .overlay {
+  background: linear-gradient(
+    180deg,
+    rgba(10, 12, 15, 0.02) 0%,
+    rgba(10, 12, 15, 0.12) 100%
+  );
+}
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(176, 141, 87, 0.08) 0%,
+    rgba(176, 141, 87, 0.18) 50%,
+    rgba(176, 141, 87, 0.08) 100%
+  );
+  background-size: 220% 100%;
+  animation: skeleton-shimmer 1.2s ease-in-out infinite;
+}
+
+@keyframes skeleton-shimmer {
+  0% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: -100% 50%;
+  }
+}
+
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

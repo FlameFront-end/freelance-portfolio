@@ -1,0 +1,99 @@
+.card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--panel);
+  padding: var(--space-5);
+  display: grid;
+  gap: var(--space-3);
+  box-shadow: var(--shadow-soft);
+}
+
+.statusChip {
+  width: fit-content;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.38rem 0.62rem 0.38rem 0.4rem;
+  border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--border));
+  background: color-mix(in srgb, var(--accent-soft) 30%, white 70%);
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  background: var(--accent);
+}
+
+.icon svg {
+  width: 14px;
+  height: 14px;
+}
+
+.statusLabel {
+  color: var(--muted);
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.card h1 {
+  margin: 0;
+  font-size: clamp(1.75rem, 3.2vw, 2.35rem);
+  line-height: 1.1;
+}
+
+.lead {
+  max-width: 55ch;
+}
+
+.details {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--accent-soft) 28%, white 72%);
+  padding: var(--space-3);
+  display: grid;
+  gap: var(--space-2);
+}
+
+.details div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.details span {
+  color: var(--text-2);
+  font-size: 0.9rem;
+}
+
+.details strong {
+  color: var(--text);
+  font-size: 0.94rem;
+}
+
+.secondaryBtn {
+  border: 1px solid color-mix(in srgb, var(--accent) 32%, var(--border));
+  border-radius: 999px;
+  background: #fff;
+  color: var(--text);
+  width: fit-content;
+  padding: 0.68rem 1.02rem;
+  font-size: 0.83rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .card {
+    padding: var(--space-4);
+  }
+}
